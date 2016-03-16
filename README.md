@@ -48,6 +48,10 @@ In another shell window, run <code>redis-cli</code>
 
 A number of Redis configuration values can be tuned via environment variables:
 
+*  <code>REDIS_URL</code>
+
+   The complete URL for accessing Redis, used by Rails and Sidekiq.
+
 *  <code>REDIS_PASSWORD</code>
 
    The password for accessing Redis.
