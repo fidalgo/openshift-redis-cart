@@ -19,10 +19,5 @@ if ! [ ${REDIS_PASSWORD+x} ]; then
   client_result "Redis is now configured with a default password $(cat env/REDIS_PASSWORD)"
 fi
 
-if ! [ ${REDIS_URL+x} ]; then
-	echo "redis://:$REDIS_PASSWORD@$OPENSHIFT_REDIS_HOST:$OPENSHIFT_REDIS_PORT" > env/REDIS_URL
-	client_result "Redis is now configured with the URL: $(cat env/REDIS_URL)"
-fi
-
 client_result "You can configure various Redis scaling and persistence modes by setting"
 client_result "environment variables - consult the cartridge README for more info."
