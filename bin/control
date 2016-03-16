@@ -51,7 +51,7 @@ function use-source() {
     fi
     mkdir -p env
     cp $TMP/_env/* env/
-    
+
     bin/setup
 }
 
@@ -70,6 +70,7 @@ function start() {
             echo "Redis failed to start - $ret" 1>&2
             return $ret
         fi
+        echo "redis://:$REDIS_PASSWORD@$OPENSHIFT_REDIS_HOST:$OPENSHIFT_REDIS_PORT" > env/REDIS_URL
     fi
 
     if [ "$REDIS_SENTINEL" == "1" ]; then
@@ -111,7 +112,7 @@ function stop() {
     if [ -f $sentinel_pid ]; then
         kill -s SIGTERM $(cat $sentinel_pid)
         rm $sentinel_pid
-    fi        
+    fi
 
     return 1
 }
